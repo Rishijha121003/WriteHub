@@ -9,6 +9,9 @@ const postRoutes = require('./routes/post.routes');
 const app = express();
 const PORT = 3000;
 
+app.get("/", (req, res) => {
+    res.send("✅ Server is running and connected to MongoDB!");
+});
 // Middleware
 app.use(cors());
 
