@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - WriteHub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="logo"><a href="index.html">WriteHub</a></h1>
+            <nav class="main-nav">
+                <a href="login.html" class="nav-link">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container login-container">
+        <section class="form-container">
+            <div class="form-header">
+                <h2>Create Your Account</h2>
+                <p>Join WriteHub to start publishing your own posts.</p>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Choose a username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" placeholder="Choose a secure password" required>
+                </div>
+                <button type="submit">Sign Up</button>
+                <p class="form-switch-link">
+                    Already have an account? <a href="login.html">Login here</a>
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 WriteHub by Rishi Kumar Jha. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script src="js/signup.js"></script>
+</body>
+
+</html>

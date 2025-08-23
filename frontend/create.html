@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Post - WriteHub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="logo"><a href="index.html">WriteHub</a></h1>
+            <nav class="main-nav">
+                <a href="create.html" class="create-post-btn">Create New Post</a>
+                <button id="theme-toggle" title="Toggle Theme">Toggle</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="form-container">
+            <h2>Create a New Post</h2>
+            <form id="postForm">
+                <input type="text" id="title" placeholder="Enter post title..." required>
+                <textarea id="content" placeholder="Write your amazing content here..." required></textarea>
+                <input type="text" id="author" placeholder="Your name..." required>
+                <button type="submit">Publish Post</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 WriteHub by Rishi Kumar Jha. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script src="js/create.js"></script>
+</body>
+
+</html>

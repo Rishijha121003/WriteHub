@@ -1,0 +1,575 @@
+/* 1. Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* 2. CSS Variables (Theming V2) */
+:root {
+    /* New vibrant gradient and colors */
+    --primary-gradient: linear-gradient(45deg, #8A2BE2, #6a5acd);
+    --primary-color: #7a4be2;
+    --primary-hover-color: #6a3acd;
+
+    --background-color: #f0f2f5;
+    --card-background-color: #ffffff;
+    --text-color: #333333;
+    --subtle-text-color: #777777;
+    --border-color: #e0e0e0;
+
+    /* New soft, multi-layered shadow */
+    --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.07), 0 4px 6px rgba(0, 0, 0, 0.08);
+
+    --font-family: 'Poppins', sans-serif;
+    --border-radius: 12px;
+}
+
+/* Dark Mode Theme */
+[data-theme='dark'] {
+    --background-color: #121212;
+    --card-background-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --subtle-text-color: #a0a0a0;
+    --border-color: #333333;
+    --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 3. General & Layout Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 4. Keyframe Animation for Smooth Loading */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 5. Header, Nav, & Theme Toggle Styling */
+.site-header {
+    background: var(--card-background-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    animation: fadeInUp 0.5s ease-out;
+    border-bottom: 2px solid transparent;
+    border-image: var(--primary-gradient) 1;
+}
+
+.header-content,
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.create-post-btn {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.create-post-btn:hover {
+    text-decoration: none;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+}
+
+.back-link {
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+#theme-toggle {
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* 6. Main Content Layout (Post Feed + Sidebar) */
+main.container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .main-content {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.section-title {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+/* 7. Form, Post Cards & Detail Styling */
+.form-container,
+.post,
+.sidebar .widget,
+.post-full {
+    background: var(--card-background-color);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    border-left: 4px solid transparent;
+    border-image: var(--primary-gradient) 1;
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover,
+.sidebar .widget:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.form-container h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="search"],
+textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.3);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background: var(--primary-gradient);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Staggered animation for posts */
+.post:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.post:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.post h3 a,
+.post-full h1 {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.post h3 a:hover {
+    color: var(--primary-color);
+}
+
+.post-meta,
+.post-full p:nth-of-type(1) {
+    font-size: 0.85em;
+    color: var(--subtle-text-color);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.post-excerpt {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.read-more-btn {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.read-more-btn:hover {
+    text-decoration: underline;
+}
+
+.post-content {
+    line-height: 1.8;
+}
+
+.post-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* style.css mein .post-meta ko update karein */
+.post-meta {
+    font-size: 0.85em;
+    color: var(--subtle-text-color);
+    /* Isse color halka ho jaayega */
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+#deleteBtn,
+#updateBtn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#deleteBtn {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+#deleteBtn:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+#updateBtn {
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+#updateBtn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* 8. Sidebar Styling */
+.widget-title {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* 9. Footer Styling */
+.site-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem 0;
+    background: var(--card-background-color);
+    color: var(--subtle-text-color);
+    border-top: 1px solid var(--border-color);
+}
+
+.author-link {
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.author-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* style.css mein neeche add karein */
+.nav-link {
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s, color 0.3s;
+    gap: 2px;
+}
+
+.nav-link:hover {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Navbar ke secondary buttons ke liye */
+.nav-btn-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-btn-secondary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.form-switch-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9em;
+}
+
+/* --- LOGIN/SIGNUP PAGE SPECIFIC STYLES --- */
+
+/* Yeh container ko page ke center mein laayega */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    /* Adjust height to fill screen between header/footer */
+}
+
+/* Form container ki max-width set karna taaki yeh bohot faile nahi */
+.login-container .form-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: var(--subtle-text-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Placeholder text ke color ko thoda halka karna */
+::placeholder {
+    color: var(--subtle-text-color);
+    opacity: 0.7;
+}
+
+/* --- NAVBAR SECONDARY BUTTONS FIX & UPGRADE --- */
+
+/* Common style for both Logout and Theme Toggle buttons */
+/* --- FINAL NAVBAR POLISH --- */
+
+/* Main navigation container ko flexbox banakar gap dena */
+/* --- FINAL NAVBAR POLISH --- */
+
+/* Main navigation container ko flexbox banakar gap dena */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    /* 'user-links' div aur 'Toggle' button ke beech gap */
+}
+
+/* Logged-in user ke links waale container ko aache se style karna */
+#user-links {
+    display: flex;
+    align-items: center;
+    /* Sabhi items ko vertically center karega */
+    gap: 1rem;
+    /* "Welcome", "Create", aur "Logout" ke beech gap */
+}
+
+/* Welcome message ko behtar look dene ke liye */
+#welcome-message {
+    font-weight: 600;
+    opacity: 0.9;
+    /* Thoda subtle look */
+    white-space: nowrap;
+    /* Yeh text ko tootne se rokega */
+}
+
+/* Logout aur Toggle buttons ki consistency ke liye */
+#logout-btn,
+#theme-toggle {
+    background-color: var(--background-color);
+    color: var(--subtle-text-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+#logout-btn:hover,
+#theme-toggle:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* About Me dropdown in Navbar */
+.about-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.about-dropdown .nav-link {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.about-dropdown .about-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: var(--card-background-color);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    min-width: 260px;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    z-index: 999;
+    color: var(--text-color);
+}
+
+/* Show dropdown on hover */
+.about-dropdown:hover .about-content {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Small fade animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,17 +1,37 @@
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const PORT = process.env.PORT || 5000;
+const mongoose = require('mongoose');
 
-const app = new express();
+// Route files ko import karna
+const authRoutes = require('./routes/auth.routes');
+const postRoutes = require('./routes/post.routes');
+
+const app = express();
+const PORT = 3000;
+
+// Middleware
 app.use(cors());
+
+// ###################################################################
+// ### YEH LINE SABSE ZAROORI HAI                                  ###
+// ### Iske bina, server JSON nahi samajh paayega aur wahi CastError aayega ###
 app.use(express.json());
+// ###################################################################
 
-app.get("/", (req,res) =>{
-    res.send("Welcome to Write Hub");
-});
 
-app.listen (PORT, () => {
-    console.log("Welcome to WriteHub.");
-    console.log(`Server is running on port:${PORT}`);
+// --- MongoDB Connection ---
+const dbURI = 'mongodb://127.0.0.1:27017/WriteHubDB';
+mongoose.connect(dbURI)
+    .then(() => console.log('MongoDB connected successfully!'))
+    .catch((err) => console.error('MongoDB connection error:', err));
+
+
+// --- Use Routes ---
+app.use('/api/auth', authRoutes);
+app.use('/api/posts', postRoutes);
+
+
+// Server ko start karna (sirf ek baar)
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
 });

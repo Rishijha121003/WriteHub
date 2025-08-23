@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Detail - WriteHub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="logo"><a href="index.html">WriteHub</a></h1>
+            <nav class="main-nav">
+                <div id="guest-links">
+                    <a href="signup.html" class="nav-link">Sign Up</a>
+                    <a href="login.html" class="nav-link">Login</a>
+                </div>
+                <div id="user-links" style="display: none;">
+                    <span id="welcome-message" class="nav-link"></span>
+                    <a href="create.html" class="create-post-btn">Create New Post</a>
+                    <button id="logout-btn" class="nav-link">Logout</button>
+                </div>
+                <button id="theme-toggle" title="Toggle Theme">Toggle</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="post-detail-container" class="post-full">
+            <p>Loading post...</p>
+        </div>
+
+        <section id="author-box-container" class="widget author-box" style="display: none;">
+        </section>
+
+        <section class="widget comments-section">
+            <h3 class="widget-title">Comments</h3>
+            <div id="comments-list">
+                <p>No comments yet. Be the first to comment!</p>
+            </div>
+            <form id="comment-form">
+                <textarea placeholder="Write your comment..." required></textarea>
+                <button type="submit">Post Comment</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 WriteHub by Rishi Kumar Jha. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script src="js/post-detail.js"></script>
+</body>
+
+</html>

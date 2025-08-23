@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WriteHub Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="logo"><a href="index.html">WriteHub</a></h1>
+            <nav class="main-nav">
+                <div id="guest-links">
+                    <a href="signup.html" class="nav-link">Sign Up</a>
+                    <a href="login.html" class="nav-link">Login</a>
+                </div>
+
+                <div id="user-links" style="display: none;">
+                    <span id="welcome-message" class="nav-link"></span>
+                    <a href="create.html" class="create-post-btn">Create New Post</a>
+                    <button id="logout-btn" class="nav-link">Logout</button>
+
+                    <!-- About Me moved into Navbar -->
+                    <div class="about-dropdown">
+                        <button class="nav-link">About Me ▾</button>
+                        <div class="about-content">
+                            <p>Welcome to WriteHub! My name is Rishi and this is my personal blog system where I share
+                                my
+                                thoughts and learnings.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="theme-toggle" title="Toggle Theme">DarkMode</button>
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="container">
+        <div class="main-content">
+            <section class="post-feed">
+                <h2 class="section-title">Latest Posts</h2>
+                <div id="postsList">
+                </div>
+            </section>
+            <aside class="sidebar">
+
+                <div class="widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul>
+                        <li>Technology</li>
+                        <li>Programming</li>
+                        <li>Web Development</li>
+                        <li>Personal Growth</li>
+                    </ul>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 WriteHub by Rishi Kumar Jha. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/global.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+</body>
+
+</html>
