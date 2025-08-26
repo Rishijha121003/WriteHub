@@ -4,8 +4,8 @@
 /* 2. CSS Variables (Theming) */
 :root {
     --primary-gradient: linear-gradient(90deg, #5c1d98, #c9cd5a);
-    --primary-color: #4bb2e2;
-    --primary-hover-color: #3ab0cd;
+    --primary-color: #c94be2;
+    --primary-hover-color: #b2bbbd;
     --background-color: #f0f2f5;
     --card-background-color: #ffffff;
     --text-color: #333333;
