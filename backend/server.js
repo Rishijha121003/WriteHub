@@ -5,22 +5,14 @@ const mongoose = require('mongoose');
 // Route files ko import karna
 const authRoutes = require('./routes/auth.routes');
 const postRoutes = require('./routes/post.routes');
+const userRoutes = require('./routes/user.routes'); // <-- Yeh line zaroori hai
 
 const app = express();
 const PORT = 3000;
 
-app.get("/", (req, res) => {
-    res.send("✅ Server is running and connected to MongoDB!");
-});
 // Middleware
 app.use(cors());
-
-// ###################################################################
-// ### YEH LINE SABSE ZAROORI HAI                                  ###
-// ### Iske bina, server JSON nahi samajh paayega aur wahi CastError aayega ###
 app.use(express.json());
-// ###################################################################
-
 
 // --- MongoDB Connection ---
 const dbURI = 'mongodb://127.0.0.1:27017/WriteHubDB';
@@ -28,19 +20,12 @@ mongoose.connect(dbURI)
     .then(() => console.log('MongoDB connected successfully!'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
-
 // --- Use Routes ---
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/users', userRoutes); // <-- Yeh line zaroori hai
 
-
-// Server ko start karna (sirf ek baar)
+// Server ko start karna
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(() => console.log("✅ MongoDB connected"))
-    .catch(err => console.error("❌ MongoDB connection error:", err));

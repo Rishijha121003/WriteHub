@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchPosts = async (page = 1) => {
         try {
-            // Request ke saath page number aur limit bhejna
+            // Backend se posts maangna (ek page par 10)
             const response = await fetch(`http://localhost:3000/api/posts?page=${page}&limit=5`);
             if (!response.ok) throw new Error('Network response was not ok');
 
@@ -13,26 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             postsList.innerHTML = '';
             if (posts.length === 0) {
-                postsList.innerHTML = '<p>No posts yet. Feel free to be the first!</p>';
+                postsList.innerHTML = '<p>No posts found.</p>';
                 return;
             }
 
             posts.forEach((post, index) => {
-                // Post card banane ka logic waisa hi rahega...
                 const postElement = document.createElement('div');
                 postElement.className = 'post';
-                postElement.style.animationDelay = `${index * 0.1}s`;
-                const summary = post.content.substring(0, 150) + '...';
+                const summary = post.content.substring(0, 200) + '...';
                 postElement.innerHTML = `
                     <h3><a href="post.html?id=${post._id}">${post.title}</a></h3>
-                    <p class="post-meta">By <a href="my-posts.html?author=${post.author}" class="author-link">${post.author}</a> on ${new Date(post.createdAt).toLocaleDateString()}</p>
+                    <p class="post-meta">
+                        By <a href="my-posts.html?author=${post.author}" class="author-link">${post.author}</a> 
+                        on ${new Date(post.createdAt).toLocaleDateString()}
+                    </p>
                     <p class="post-excerpt">${summary}</p>
                     <a href="post.html?id=${post._id}" class="read-more-btn">Read More &rarr;</a>
                 `;
                 postsList.appendChild(postElement);
             });
 
-            // Naya: Pagination buttons banana
+            // Pagination buttons banana
             renderPagination(totalPages, currentPage);
 
         } catch (error) {
@@ -42,8 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderPagination = (totalPages, currentPage) => {
+        if (!paginationContainer) return;
         paginationContainer.innerHTML = '';
-        if (totalPages <= 1) return; // Agar ek hi page hai toh buttons ki zaroorat nahi
+        if (totalPages <= 1) return;
 
         for (let i = 1; i <= totalPages; i++) {
             const pageButton = document.createElement('button');
@@ -52,7 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (i === currentPage) {
                 pageButton.classList.add('active');
             }
-            pageButton.addEventListener('click', () => fetchPosts(i));
+            pageButton.addEventListener('click', () => {
+                fetchPosts(i);
+                window.scrollTo(0, 0); // Page number click karne par upar scroll karein
+            });
             paginationContainer.appendChild(pageButton);
         }
     };

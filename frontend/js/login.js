@@ -14,23 +14,29 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('http://localhost:3000/api/auth/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password }),
             });
 
             const data = await response.json();
 
+            // ...
             if (response.ok) {
-                // --- SABSE ZAROORI PART ---
-                // Token aur user info ko browser ki localStorage mein save karna
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('user', JSON.stringify(data.user));
+                // Token aur user info ko browser ki sessionStorage mein save karna
+                sessionStorage.setItem('token', data.token);
+                sessionStorage.setItem('user', JSON.stringify(data.user));
 
                 alert('Login successful!');
-                // User ko homepage par bhej do
-                window.location.href = 'index.html';
+
+                // --- Yahan role check karke redirect karein ---
+                if (data.user.role === 'admin') {
+                    // Agar user admin hai, toh use admin.html par bhejo
+                    window.location.href = 'admin.html';
+                } else {
+                    // Warna normal user ko homepage par bhejo
+                    window.location.href = 'index.html';
+                }
+                // ------------------------------------------
             } else {
                 alert(`Login failed: ${data.message}`);
                 submitButton.disabled = false;

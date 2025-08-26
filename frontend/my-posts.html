@@ -5,14 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Posts - WriteHub</title>
-    <link rel="stylesheet" href="css/style.css">\
-    <div class="header-content">
-        <h1 class="logo"><a href="index.html">WriteHub</a></h1>
-        <nav class="main-nav">
-            <a href="create.html" class="create-post-btn">Create New Post</a>
-            <button id="theme-toggle" title="Toggle Theme">Toggle</button>
-        </nav>
-    </div>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <header class="site-header">
+        <div class="header-content container">
+            <h1 class="logo"><a href="index.html">WriteHub</a></h1>
+
+            <nav class="main-nav desktop-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="all-posts.html" class="nav-link">All Posts</a>
+
+                <div class="nav-actions">
+                    <button class="nav-icon-btn" id="search-btn" title="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                    <button class="nav-icon-btn" id="theme-toggle" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <div id="guest-links" class="nav-group">
+                        <a href="login.html" class="nav-link">Login</a>
+                        <a href="signup.html" class="create-post-btn">Sign Up</a>
+                    </div>
+
+                    <div id="user-links" class="nav-group" style="display: none;">
+                        <a href="create.html" class="create-post-btn">Create New Post</a>
+
+                        <div class="user-dropdown">
+                            <button class="nav-avatar-btn">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <div id="welcome-message" class="dropdown-header"></div>
+                                <a href="#" id="my-posts-link">My Posts</a>
+                                <a href="admin.html" id="admin-link" style="display: none;">Admin Panel</a>
+                                <hr>
+                                <button id="logout-btn">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <button id="hamburger-btn" class="hamburger-btn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div id="mobile-nav" class="mobile-nav"></div>
+    </header>
 </head>
 
 <body>

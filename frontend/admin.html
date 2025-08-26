@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WriteHub Blog</title>
+    <title>Admin Dashboard - WriteHub</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
 <body>
@@ -53,29 +54,42 @@
         </div>
         <div id="mobile-nav" class="mobile-nav"></div>
     </header>>
-    <div id="mobile-nav" class="mobile-nav"></div>
-
     <main class="container">
-        <div class="main-content">
-            <section class="post-feed">
-                <h2 class="section-title">Latest Posts</h2>
-                <div id="postsList"></div>
-                <div id="pagination-container"></div>
-            </section>
-            <aside class="sidebar">
-                <div class="widget">
-                    <h3 class="widget-title">About WriteHub</h3>
-                    <p>Welcome! This is a full-stack blog built with Node.js, Express, and MongoDB. Sign up to share
-                        your own stories.</p>
-                </div>
-                <div class="widget">
-                    <h3 class="widget-title">Categories</h3>
-                    <ul>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Travel</a></li>
-                    </ul>
-                </div>
-            </aside>
+        <div class="admin-header">
+            <h2 class="section-title">Admin Dashboard</h2>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <p id="total-users">...</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Posts</h3>
+                <p id="total-posts">...</p>
+            </div>
+        </div>
+
+        <div class="user-management widget">
+            <h3 class="widget-title">Manage Users</h3>
+
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list">
+                </tbody>
+            </table>
+            <div class="widget popular-posts-widget">
+                <h3 class="widget-title">Most Popular Posts</h3>
+                <ul id="popular-posts-list">
+                </ul>
+            </div>
         </div>
     </main>
 
@@ -86,7 +100,7 @@
     </footer>
 
     <script src="js/global.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 
 </html>

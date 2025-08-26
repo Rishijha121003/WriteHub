@@ -6,27 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Post - WriteHub</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
 <body>
-
     <header class="site-header">
-        <div class="header-content">
+        <div class="header-content container">
             <h1 class="logo"><a href="index.html">WriteHub</a></h1>
-            <nav class="main-nav">
-                <a href="create.html" class="create-post-btn">Create New Post</a>
-                <button id="theme-toggle" title="Toggle Theme">Toggle</button>
+
+            <nav class="main-nav desktop-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="all-posts.html" class="nav-link">All Posts</a>
+
+                <div class="nav-actions">
+                    <button class="nav-icon-btn" id="search-btn" title="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                    <button class="nav-icon-btn" id="theme-toggle" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <div id="guest-links" class="nav-group">
+                        <a href="login.html" class="nav-link">Login</a>
+                        <a href="signup.html" class="create-post-btn">Sign Up</a>
+                    </div>
+
+                    <div id="user-links" class="nav-group user-dropdown" style="display: none;">
+                        <button class="nav-avatar-btn">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <div id="welcome-message" class="dropdown-header"></div>
+                            <a href="my-posts.html" id="my-posts-link">My Posts</a>
+                            <a href="create.html" class="create-post-link">Create New Post</a>
+                            <a href="admin.html" id="admin-link" style="display: none;">Admin Panel</a>
+                            <hr>
+                            <button id="logout-btn">Logout</button>
+                        </div>
+                    </div>
+                </div>
             </nav>
+
+            <button id="hamburger-btn" class="hamburger-btn">
+            </button>
         </div>
-    </header>
+        <div id="mobile-nav" class="mobile-nav"></div>
+    </header>>
 
     <main class="container">
         <section class="form-container">
             <h2>Create a New Post</h2>
             <form id="postForm">
-                <input type="text" id="title" placeholder="Enter post title..." required>
-                <textarea id="content" placeholder="Write your amazing content here..." required></textarea>
-                <input type="text" id="author" placeholder="Your name..." required>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" placeholder="Enter post title..." required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea id="content" placeholder="Write your amazing content here..." required></textarea>
+                </div>
                 <button type="submit">Publish Post</button>
             </form>
         </section>

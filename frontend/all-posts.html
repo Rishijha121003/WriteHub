@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Detail - WriteHub</title>
+    <title>All Posts - WriteHub</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 </head>
 
 <body>
@@ -23,7 +22,6 @@
                     <button class="nav-icon-btn" id="search-btn" title="Search">
                         <i class="fas fa-search"></i>
                     </button>
-
                     <button class="nav-icon-btn" id="theme-toggle" title="Toggle Theme">
                         <i class="fas fa-moon"></i>
                     </button>
@@ -35,14 +33,13 @@
 
                     <div id="user-links" class="nav-group" style="display: none;">
                         <a href="create.html" class="create-post-btn">Create New Post</a>
-
                         <div class="user-dropdown">
                             <button class="nav-avatar-btn">
                                 <i class="fas fa-user"></i>
                             </button>
                             <div class="dropdown-content">
                                 <div id="welcome-message" class="dropdown-header"></div>
-                                <a href="#" id="my-posts-link">My Posts</a>
+                                <a href="my-posts.html" id="my-posts-link">My Posts</a>
                                 <a href="admin.html" id="admin-link" style="display: none;">Admin Panel</a>
                                 <hr>
                                 <button id="logout-btn">Logout</button>
@@ -58,25 +55,14 @@
         </div>
         <div id="mobile-nav" class="mobile-nav"></div>
     </header>
+
     <main class="container">
-        <div id="post-detail-container" class="post-full">
-            <p>Loading post...</p>
+        <h2 class="section-title">All Blog Posts</h2>
+
+        <div id="postsList" class="posts-list-container">
         </div>
 
-        <section id="author-box-container" class="widget author-box" style="display: none;">
-        </section>
-
-        <section class="widget comments-section">
-            <h3 class="widget-title">Comments</h3>
-            <div id="comments-list">
-                <p>No comments yet. Be the first to comment!</p>
-            </div>
-            <form id="comment-form">
-                <textarea placeholder="Write your comment..." required></textarea>
-                <button type="submit">Post Comment</button>
-            </form>
-        </section>
-
+        <div id="pagination-container"></div>
     </main>
 
     <footer class="site-footer">
@@ -86,7 +72,7 @@
     </footer>
 
     <script src="js/global.js"></script>
-    <script src="js/post-detail.js"></script>
+    <script src="js/all-posts.js"></script>
 </body>
 
 </html>

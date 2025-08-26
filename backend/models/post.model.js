@@ -13,6 +13,10 @@ const postSchema = new mongoose.Schema({
     author: {
         type: String,
         required: true
+    },
+    views: {
+        type: Number,
+        default: 0
     }
 }, { timestamps: true });
 
